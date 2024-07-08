@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="box">
+      <h2 class="title is-4 has-text-centered">Información del Formulario</h2>
+      <div class="content">
+        <div class="columns">
+          <div class="column is-one-third has-text-weight-bold">Nombre:</div>
+          <div class="column">{{ formData.nombre }}</div>
+        </div>
+        <div class="columns">
+          <div class="column is-one-third has-text-weight-bold">Email:</div>
+          <div class="column">{{ formData.email }}</div>
+        </div>
+        <div class="columns">
+          <div class="column is-one-third has-text-weight-bold">Teléfono:</div>
+          <div class="column">{{ formData.telefono }}</div>
+        </div>
+        <div class="columns">
+          <div class="column is-one-third has-text-weight-bold">Fecha de Inicio:</div>
+          <div class="column">{{ formData.fechaInicio | date: 'longDate' }}</div>
+        </div>
+        <div class="columns">
+          <div class="column is-one-third has-text-weight-bold">Fecha de Fin:</div>
+          <div class="column">{{ formData.fechaFin | date: 'longDate' }}</div>
+        </div>
+        <div class="columns">
+          <div class="column is-one-third has-text-weight-bold">Cantidad de Invitados:</div>
+          <div class="column">{{ formData.cantidadInvitados }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

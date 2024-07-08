@@ -1,0 +1,90 @@
+<section class="hero is-fullheight is-light">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-half">
+          <div class="box">
+            <h2 class="title">Formulario</h2>
+            <form [formGroup]="formulario" (ngSubmit)="enviarFormulario()">
+              <div class="field">
+                <label class="label" for="nombre">Nombre:</label>
+                <div class="control">
+                  <input class="input" type="text" id="nombre" formControlName="nombre">
+                </div>
+                <div *ngIf="formulario.get('nombre')?.invalid && formulario.get('nombre')?.touched">
+                  <div *ngIf="formulario.get('nombre')?.errors?.['required']" class="help is-danger">El nombre es requerido.</div>
+                </div>
+              </div>
+    
+              <div class="field">
+                <label class="label" for="email">Email:</label>
+                <div class="control">
+                  <input class="input" type="email" id="email" formControlName="email">
+                </div>
+                <div *ngIf="formulario.get('email')?.invalid && formulario.get('email')?.touched">
+                  <div *ngIf="formulario.get('email')?.errors?.['required']" class="help is-danger">El email es requerido.</div>
+                  <div *ngIf="formulario.get('email')?.errors?.['email']" class="help is-danger">El email no es válido.</div>
+                </div>
+              </div>
+    
+              <div class="field">
+                <label class="label" for="telefono">Teléfono:</label>
+                <div class="control">
+                  <input class="input" type="text" id="telefono" formControlName="telefono">
+                </div>
+                <div *ngIf="formulario.get('telefono')?.invalid && formulario.get('telefono')?.touched">
+                  <div *ngIf="formulario.get('telefono')?.errors?.['pattern']" class="help is-danger">El teléfono debe contener 10 dígitos.</div>
+                </div>
+              </div>
+    
+              <div class="field">
+                <label class="label" for="fechaInicio">Fecha de Inicio:</label>
+                <div class="control">
+                  <input class="input" type="date" id="fechaInicio" formControlName="fechaInicio">
+                </div>
+                <div *ngIf="formulario.get('fechaInicio')?.invalid && formulario.get('fechaInicio')?.touched">
+                  <div *ngIf="formulario.get('fechaInicio')?.errors?.['required']" class="help is-danger">La fecha de inicio es requerida.</div>
+                  <div *ngIf="formulario.get('fechaInicio')?.errors?.['fechaNoFutura']" class="help is-danger">La fecha de inicio debe ser futura.</div>
+                  <div *ngIf="formulario.get('fechaInicio')?.errors?.['fechaFueraDeLimite']" class="help is-danger">La fecha de inicio debe ser dentro de los próximos 30 días.</div>
+                </div>
+              </div>
+    
+              <div class="field">
+                <label class="label" for="fechaFin">Fecha de Fin:</label>
+                <div class="control">
+                  <input class="input" type="date" id="fechaFin" formControlName="fechaFin">
+                </div>
+                <div *ngIf="formulario.get('fechaFin')?.invalid && formulario.get('fechaFin')?.touched">
+                  <div *ngIf="formulario.get('fechaFin')?.errors?.['required']" class="help is-danger">La fecha de fin es requerida.</div>
+                  <div *ngIf="formulario.get('fechaFin')?.errors?.['fechaFinInvalida']" class="help is-danger">La fecha de fin debe ser como máximo 10 días después de la fecha de inicio.</div>
+                  <div *ngIf="formulario.get('fechaFin')?.errors?.['fechaNoFutura']" class="help is-danger">La fecha de fin debe ser futura.</div>
+                  <div *ngIf="formulario.get('fechaFin')?.errors?.['fechaFueraDeLimite']" class="help is-danger">La fecha de fin debe ser dentro de los próximos 30 días.</div>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label" for="cantidadInvitados">Cantidad de Invitados:</label>
+                <div class="control">
+                  <input class="input" type="number" id="cantidadInvitados" formControlName="cantidadInvitados">
+                </div>
+                <div *ngIf="formulario.get('cantidadInvitados')?.invalid && formulario.get('cantidadInvitados')?.touched">
+                  <div *ngIf="formulario.get('cantidadInvitados')?.errors?.['required']" class="help is-danger">La cantidad de invitados es requerida.</div>
+                  <div *ngIf="formulario.get('cantidadInvitados')?.errors?.['max']" class="help is-danger">La cantidad de invitados no puede ser mayor a 100.</div>
+                </div>
+              </div>
+    
+              <div class="field is-grouped">
+                <div class="control">
+                  <button class="button is-link" type="submit" [disabled]="formulario.invalid">Enviar</button>
+                </div>
+                <div class="control">
+                  <button class="button is-light" type="button">Cancelar</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

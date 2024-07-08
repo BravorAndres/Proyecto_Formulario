@@ -1,6 +1,20 @@
-import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
-import { AppComponent } from './app/app.component';
+import { bootstrapApplication } from "@angular/platform-browser";
+import { provideRouter,RouterModule, Routes } from "@angular/router";
+import { AppComponent } from "./app/app.component";
+import { FormularioComponent } from "./app/formulario/formulario.component";
+import { MostrarInformacionComponent } from "./app/mostrar-informacion/mostrar-informacion.component";
+import { importProvidersFrom } from "@angular/core";
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+
+const routes: Routes = [
+  {path: '',component: FormularioComponent},
+  {path: 'mostrar-informacion',component: MostrarInformacionComponent}
+  
+];
+
+bootstrapApplication(AppComponent,{
+  providers:[
+    provideRouter(routes),
+  ]
+}).catch(err => console.error(err))
+
